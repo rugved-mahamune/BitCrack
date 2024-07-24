@@ -1,4 +1,7 @@
 @echo off
+
+powershell set-executionpolicy remotesigned
+
 setlocal EnableDelayedExpansion
 
 rem Specify the maximum value
